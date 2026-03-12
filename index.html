@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>સનાતન ધર્મ • રામાયણ અને ગીતા ક્વિઝ</title>
+    <!-- Tailwind + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+     
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap');
+        
+        * {
+            font-family: 'Tiro Devanagari Sanskrit', 'Poppins', serif;
+        }
+
+      
+        body {
+            background: radial-gradient(circle at 0% 30%, #fbbf24 0%, #b45309 40%, #2d1b0b 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+       
+        .divine-float {
+            position: fixed;
+            font-size: 4rem;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+            filter: drop-shadow(0 0 20px #ffae42);
+            animation: sanatanFloat 16s infinite ease-in-out;
+        }
+
+        @keyframes sanatanFloat {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            40% { transform: translateY(-40px) rotate(8deg) scale(1.1); }
+            70% { transform: translateY(20px) rotate(-5deg) scale(0.95); }
+            100% { transform: translateY(0px) rotate(0deg) scale(1); }
+        }
+
+       
+        .sanatan-card {
+            background: rgba(255, 245, 220, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 4px solid #eab308;
+            border-radius: 6rem 2rem 6rem 2rem;
+            box-shadow: 0 40px 70px rgba(100, 50, 10, 0.8), 0 0 0 5px #fbbf24 inset, 0 0 40px #ffaa33;
+            transition: all 0.4s;
+        }
+
+     
+        .title-gold {
+            background: linear-gradient(145deg, #ffd966, #b45309);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 6px 6px 0 #2d1b0b, 0 0 40px #fbbf24;
+            font-weight: 900;
+            letter-spacing: 6px;
+        }
+
+      
+        .option-btn {
+            background: #fcf3d7;
+            border: 4px solid #c29a2b;
+            border-radius: 50px 15px 50px 15px;
+            padding: 1.3rem 1rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #3e2c13;
+            box-shadow: 0 12px 0 #7b4f1b, 0 10px 30px #eab308;
+            transition: all 0.12s cubic-bezier(0.2, 1.2, 0.4, 1);
+            transform: translateY(0);
+            text-align: center;
+            line-height: 1.4;
+            width: 100%;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: #ffecaa;
+            border-color: #fbbf24;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 0 #a16207, 0 25px 40px #ffb703;
+        }
+
+        .option-btn:active:not(:disabled) {
+            transform: translateY(6px);
+            box-shadow: 0 6px 0 #7b4f1b;
+        }
+
+        .option-btn.correct {
+            background: #b8e0b8;
+            border-color: #15803d;
+            box-shadow: 0 0 40px #16a34a, 0 10px 0 #0f5e2e;
+            color: #14532d;
+            transform: scale(1.02);
+            pointer-events: none;
+        }
+
+        .option-btn.wrong {
+            background: #f7cfcf;
+            border-color: #b91c1c;
+            box-shadow: 0 0 35px #dc2626, 0 10px 0 #7f1d1d;
+            color: #4c0b0b;
+            text-decoration: line-through wavy red 3px;
+            pointer-events: none;
+        }
+
+       
+        .vedic-progress {
+            background: linear-gradient(90deg, #fbbf24, #ea580c, #dc2626, #fbbf24);
+            background-size: 300% 100%;
+            height: 1.6rem;
+            border-radius: 40px;
+            box-shadow: 0 0 25px #ff9900, 0 5px 15px #3e2c13;
+            animation: agniShimmer 4s infinite linear;
+        }
+
+        @keyframes agniShimmer {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        
+        .nav-btn {
+            background: #854d0e;
+            border: 4px solid #fbbf24;
+            border-radius: 100px 30px 100px 30px;
+            color: #fef9c3;
+            font-weight: 900;
+            padding: 1rem 2.8rem;
+            font-size: 2rem;
+            box-shadow: 0 18px 0 #5b3e0b, 0 10px 35px #ffb347;
+            transition: 0.08s linear;
+            transform: translateY(0);
+            min-width: 180px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #a35f12;
+            transform: translateY(-9px);
+            box-shadow: 0 27px 0 #5b3e0b, 0 20px 40px #fbbf24;
+        }
+
+        .nav-btn:active:not(:disabled) {
+            transform: translateY(6px);
+            box-shadow: 0 10px 0 #5b3e0b;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            transform: translateY(6px);
+            box-shadow: 0 8px 0 #3e2c13;
+            pointer-events: none;
+        }
+
+    
+        .havan-kund {
+            background: #fffbeb;
+            border: 8px double #b45309;
+            border-radius: 8rem 2rem 8rem 2rem;
+            box-shadow: 0 0 70px #ffb703, inset 0 0 40px #ffb347;
+            padding: 2.5rem;
+        }
+
+        @media (max-width: 650px) {
+            .option-btn { font-size: 1.2rem; padding: 0.9rem; }
+            .nav-btn { font-size: 1.6rem; padding: 0.8rem 1.5rem; min-width: 130px; }
+            .sanatan-card { border-radius: 4rem 1.5rem 4rem 1.5rem; }
+        }
+
+       
+        .kalash {
+            animation: kalashSpandan 2.2s infinite alternate;
+            filter: drop-shadow(0 0 20px gold);
+            font-size: 3.5rem;
+        }
+
+        @keyframes kalashSpandan {
+            from { transform: scale(1); text-shadow: 0 0 5px #ff8c00; }
+            to { transform: scale(1.18); text-shadow: 0 0 40px #ffdd44; }
+        }
+    </style>
+</head>
+<body class="relative flex items-center justify-center p-2 sm:p-4">
+
+   
+    <div class="divine-float" style="top: 2%; left: 3%;">🕉️</div>
+    <div class="divine-float" style="top: 12%; right: 1%; animation-delay: -4s;">🔱</div>
+    <div class="divine-float" style="bottom: 8%; left: 7%; animation-delay: -2s;">🪷</div>
+    <div class="divine-float" style="top: 45%; left: 12%; animation-delay: -6s;">🐚</div>
+    <div class="divine-float" style="bottom: 18%; right: 15%; animation-delay: -8s;">☸️</div>
+    <div class="divine-float" style="top: 75%; left: 5%;">🪔</div>
+    <div class="divine-float" style="bottom: 25%; left: 20%;">📿</div>
+    <div class="divine-float" style="top: 85%; right: 18%;">🔔</div>
+
+    
+    <div class="w-full max-w-5xl relative z-20 my-4 md:my-8">
+
+       
+        <div class="text-center mb-6 md:mb-10">
+           
+            <div class="bg-black/50 inline-block px-8 py-3 rounded-full text-3xl text-yellow-200 font-bold mt-5 backdrop-blur-sm border-4 border-amber-500 shadow-2xl">
+                રામાયણ 🌿 ગીતા
+            </div>
+        </div>
+
+        
+        <div class="sanatan-card p-5 sm:p-7 md:p-9">
+
+          
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-amber-900/30 p-4 rounded-full border-2 border-amber-400 mb-8 text-amber-900 text-2xl font-bold">
+                <div class="flex items-center gap-4 bg-amber-100/90 px-7 py-3 rounded-full shadow-inner">
+                    <i class="fas fa-om text-4xl text-amber-800"></i>
+                    <span><span id="current-question">1</span>/<span id="total-questions">20</span></span>
+                </div>
+                <div class="flex items-center gap-4 bg-amber-100/90 px-7 py-3 rounded-full shadow-inner">
+                   
+                    <span>સ્કોર: <span id="score">0</span></span>
+                </div>
+            </div>
+
+           
+            <div class="w-full h-6 bg-stone-900 rounded-full mb-8 border-2 border-amber-400 shadow-2xl overflow-hidden">
+                <div id="progress" class="vedic-progress h-full rounded-full transition-all duration-700" style="width: 5%;"></div>
+            </div>
+
+            <!-- ક્વિઝ સક્રિય વિભાગ -->
+            <div id="quiz-section">
+                <!-- પ્રશ્ન પીઠ – દિવ્ય આસન -->
+                <div class="bg-gradient-to-br from-amber-100 via-amber-200 to-amber-300 p-6 md:p-9 rounded-[120px_20px_120px_20px] border-4 border-amber-600 shadow-2xl mb-10">
+                    <h2 id="question-text" class="text-3xl md:text-4xl lg:text-5xl font-black text-amber-900 text-center leading-relaxed break-words" style="text-shadow: 3px 3px 0 #ffd966;">
+                        પ્રશ્ન લોડ થાય છે...
+                    </h2>
+                </div>
+
+                <!-- વિકલ્પ ગ્રીડ -->
+                <div id="options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7 mb-12">
+                    <!-- જાવા દ્વારા ભરાશે -->
+                </div>
+
+                <!-- નેવિગેશન: ગુજરાતીમાં પાછળ / આગળ -->
+                <div class="flex flex-wrap justify-between items-center gap-4">
+                    <button id="prev-btn" class="nav-btn" disabled>
+                        <i class="fas fa-arrow-left mr-3"></i> BACK
+                    </button>
+                    <button id="next-btn" class="nav-btn">
+                       <i class="fas fa-arrow-right ml-3"></i> NEXT
+                    </button>
+                </div>
+            </div>
+
+            <!-- પરિણામ વિભાગ – હવન કુંડ (શરૂમાં છુપાયેલ) -->
+            <div id="result-section" class="hidden text-center havan-kund">
+                <div class="animate-bounce mb-4">
+                    <span class="text-8xl md:text-9xl filter drop-shadow-2xl">🏆</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-black text-amber-800">પરિણામ</h2>
+                <div class="text-8xl md:text-9xl font-extrabold my-5 text-amber-700">
+                    <span id="final-score">0</span>/<span id="final-total">20</span>
+                </div>
+
+                
+                <div id="performance-message" class="text-3xl md:text-4xl bg-amber-100 p-8 rounded-[70px] border-4 border-amber-700 shadow-inner mb-8 font-bold">
+                
+                </div>
+
+                
+                <button id="restart-btn" class="bg-gradient-to-r from-orange-700 to-red-800 text-white px-14 py-6 rounded-full text-3xl md:text-4xl font-black hover:scale-110 transition-transform shadow-2xl border-4 border-amber-400 flex items-center gap-6 mx-auto">
+                    <i class="fas fa-fire"></i> ફરી શરૂ કરો
+                </button>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        (function() {
+           
+            const quizData = [
+                { question: "રામાયણના રચયિતા કોણ છે?", options: ["વાલ્મીકિ", "વ્યાસ", "તુલસીદાસ", "કાલિદાસ"], correct: 0 },
+                { question: "ભગવાન રામના પિતાનું નામ શું?", options: ["દશરથ", "જનક", "વિશ્વામિત્ર", "વસિષ્ઠ"], correct: 0 },
+                { question: "હનુમાનજીએ સીતામાતાને ક્યાં શોધ્યા?", options: ["લંકા", "અશોક વાટિકા", "અયોધ્યા", "પંપા સરોવર"], correct: 1 },
+                { question: "રાવણની બહેનનું નામ?", options: ["શૂર્પણખા", "મંદોદરી", "કૈકેયી", "ત્રિજટા"], correct: 0 },
+                { question: "ભગવાન રામના ધનુષનું નામ?", options: ["કોદંડ", "ગાંડીવ", "પિનાક", "સારંગ"], correct: 0 },
+                { question: "સીતાજી કોના ઘરે પ્રગટ થયાં?", options: ["રાજા જનક", "રાજા દશરથ", "રાજા કુશધ્વજ", "ઋષિ શૃંગી"], correct: 0 },
+                { question: "લંકાનો રાજા કોણ હતો?", options: ["રાવણ", "વિભીષણ", "કુંભકર્ણ", "ઇન્દ્રજીત"], correct: 0 },
+                { question: "હનુમાનજીના પિતા કોણ?", options: ["વાયુદેવ", "કેસરી", "અંજની", "બાલી"], correct: 0 },
+                { question: "વાલીનો વધ કોણે કર્યો?", options: ["રામ", "લક્ષ્મણ", "સુગ્રીવ", "હનુમાન"], correct: 0 },
+                { question: "અયોધ્યાના રાજમહેલનું નામ?", options: ["રામ મહેલ", "દશરથ મહેલ", "સૂર્ય મહેલ", "કોસલ મહેલ"], correct: 1 },
+                { question: "ગીતામાં કેટલા અધ્યાય છે?", options: ["18", "16", "20", "15"], correct: 0 },
+                { question: "ગીતાના ઉપદેશક કોણ?", options: ["શ્રીકૃષ્ણ", "વ્યાસ", "અર્જુન", "શિવ"], correct: 0 },
+                { question: "અષ્ટાંગ યોગમાં શું સામેલ નથી?", options: ["યમ", "નિયમ", "ધ્યાન", "દાન"], correct: 3 },
+                { question: "કર્મયોગ કયા અધ્યાયમાં છે?", options: ["બીજો", "ત્રીજો", "ચોથો", "પાંચમો"], correct: 1 },
+                { question: "ગીતા ક્યાં સંભળાવી?", options: ["કુરુક્ષેત્ર", "દ્વારકા", "ઇન્દ્રપ્રસ્થ", "હસ્તિનાપુર"], correct: 0 },
+                { question: "વિરાટ સ્વરૂપ કોણે જોયું?", options: ["અર્જુન", "સંજય", "ધૃતરાષ્ટ્ર", "દુર્યોધન"], correct: 0 },
+                { question: "સાચો યોગી કોને કહ્યો?", options: ["સમદર્શી", "તપસ્વી", "જ્ઞાની", "ધનિક"], correct: 0 },
+                { question: "ગીતાના કુલ શ્લોક?", options: ["700", "600", "800", "1000"], correct: 0 },
+                { question: "લક્ષ્મણ રેખા કોના માટે દોરી?", options: ["સીતા", "રામ", "ઉર્મિળા", "હનુમાન"], correct: 0 },
+                { question: "સીતા સ્વયંવરમાં શિવ ધનુષ કોણે તોડ્યું?", options: ["રામ", "લક્ષ્મણ", "પરશુરામ", "જનક"], correct: 0 }
+            ];
+
+          
+            let currentQuestion = 0, score = 0;
+            let userAnswers = new Array(quizData.length).fill(null);
+            let quizCompleted = false;
+
+            
+            const questionEl = document.getElementById('question-text');
+            const optionsDiv = document.getElementById('options-container');
+            const currentQspan = document.getElementById('current-question');
+            const totalQspan = document.getElementById('total-questions');
+            const scoreSpan = document.getElementById('score');
+            const progressBar = document.getElementById('progress');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const quizSection = document.getElementById('quiz-section');
+            const resultSection = document.getElementById('result-section');
+            const finalScore = document.getElementById('final-score');
+            const finalTotal = document.getElementById('final-total');
+            const perfMsg = document.getElementById('performance-message');
+            const restartBtn = document.getElementById('restart-btn');
+
+            totalQspan.textContent = quizData.length;
+            finalTotal.textContent = quizData.length;
+
+           
+            function loadQuestion() {
+                const q = quizData[currentQuestion];
+                questionEl.textContent = q.question;
+                optionsDiv.innerHTML = '';
+
+                q.options.forEach((opt, idx) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.textContent = opt;
+
+                    if (userAnswers[currentQuestion] !== null) {
+                        btn.disabled = true;
+                        if (idx === q.correct) btn.classList.add('correct');
+                        else if (idx === userAnswers[currentQuestion] && idx !== q.correct) btn.classList.add('wrong');
+                    } else {
+                        btn.disabled = false;
+                    }
+
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (userAnswers[currentQuestion] !== null || quizCompleted) return;
+                        selectAnswer(idx);
+                    });
+
+                    optionsDiv.appendChild(btn);
+                });
+
+                currentQspan.textContent = currentQuestion + 1;
+                const progressWidth = ((currentQuestion + 1) / quizData.length) * 100;
+                progressBar.style.width = progressWidth + '%';
+
+                prevBtn.disabled = (currentQuestion === 0);
+                if (currentQuestion === quizData.length - 1) {
+                    nextBtn.innerHTML = `પૂર્ણ <i class="fas fa-check-circle ml-3"></i>`;
+                } else {
+                    nextBtn.innerHTML = `NEXT <i class="fas fa-arrow-right ml-3"></i>`;
+                }
+            }
+
+            function selectAnswer(index) {
+                if (userAnswers[currentQuestion] !== null) return;
+                const q = quizData[currentQuestion];
+                userAnswers[currentQuestion] = index;
+                const isCorrect = (index === q.correct);
+                if (isCorrect) {
+                    score++;
+                    scoreSpan.textContent = score;
+                }
+
+                const btns = optionsDiv.children;
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].disabled = true;
+                    if (i === q.correct) btns[i].classList.add('correct');
+                    else if (i === index && i !== q.correct) btns[i].classList.add('wrong');
+                }
+
+               
+                for (let i = 0; i < 12; i++) {
+                    let spark = document.createElement('div');
+                    spark.className = 'fixed w-2 h-2 bg-yellow-300 rounded-full pointer-events-none z-50';
+                    spark.style.left = Math.random() * 100 + '%';
+                    spark.style.top = Math.random() * 70 + 15 + '%';
+                    spark.style.animation = `floatOm 1.2s ease-out forwards`;
+                    spark.style.background = `radial-gradient(circle, #ffd966, #ff9900)`;
+                    document.body.appendChild(spark);
+                    setTimeout(() => spark.remove(), 1200);
+                }
+
+                const answeredCount = userAnswers.filter(a => a !== null).length;
+                progressBar.style.width = ((answeredCount) / quizData.length * 100) + '%';
+            }
+
+          
+            function showResults() {
+                quizSection.classList.add('hidden');
+                resultSection.classList.remove('hidden');
+                finalScore.textContent = score;
+
+                const percent = (score / quizData.length) * 100;
+                let message = '';
+                if (percent >= 80) message = '';
+                else if (percent >= 60) message = '';
+                else if (percent >= 40) message = '';
+                else message = '';
+
+                perfMsg.innerHTML = `<span class="text-5xl mr-4">${percent>=80?'🚩':percent>=60?'📚':'🪔'}</span> ${message}`;
+                
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        let s = document.createElement('div');
+                        s.className = 'fixed w-1.5 h-1.5 bg-orange-400 rounded-full';
+                        s.style.left = Math.random()*100+'%';
+                        s.style.top = Math.random()*100+'%';
+                        s.style.animation = 'floatOm 1.5s';
+                        document.body.appendChild(s);
+                        setTimeout(() => s.remove(), 1400);
+                    }, i*40);
+                }
+            }
+
+            function restartQuiz() {
+                currentQuestion = 0; score = 0;
+                userAnswers.fill(null);
+                quizCompleted = false;
+                scoreSpan.textContent = '0';
+                quizSection.classList.remove('hidden');
+                resultSection.classList.add('hidden');
+                loadQuestion();
+            }
+
+           
+            prevBtn.addEventListener('click', ()=>{
+                if (currentQuestion > 0) { currentQuestion--; loadQuestion(); }
+            });
+            nextBtn.addEventListener('click', ()=>{
+                if (currentQuestion < quizData.length - 1) {
+                    if (userAnswers[currentQuestion] === null) {
+                        alert("કૃપા કરીને જવાબ આપો! 🙏");
+                        return;
+                    }
+                    currentQuestion++; loadQuestion();
+                } else {
+                    if (userAnswers[currentQuestion] === null) {
+                        alert("અંતિમ પ્રશ્નનો જવાબ આપો.");
+                        return;
+                    }
+                    quizCompleted = true;
+                    showResults();
+                }
+            });
+            restartBtn.addEventListener('click', restartQuiz);
+
+            loadQuestion();
+
+            
+            const style = document.createElement('style');
+            style.innerHTML = `@keyframes floatOm { 0% { transform: scale(1) translateY(0); opacity:1; } 100% { transform: scale(2) translateY(-120px); opacity:0; }}`;
+            document.head.appendChild(style);
+        })();
+    </script>
+</body>
+</html>
