@@ -415,7 +415,7 @@
                 else if (percent >= 40) message = '';
                 else message = '';
 
-                perfMsg.innerHTML = `<span class="text-5xl mr-4">${percent>=80?'🚩':percent>=60?'📚':'🪔'}</span> ${message}`;
+                perfMsg.innerHTML = `<span class="text-5xl mr-4">${percent>=80?'':percent>=60?'':''}</span> ${message}`;
                 
                 for (let i = 0; i < 20; i++) {
                     setTimeout(() => {
